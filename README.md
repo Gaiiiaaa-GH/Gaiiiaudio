@@ -30,11 +30,11 @@ Not on the Chrome Web Store.
 
 ![cipher](.github/assets/cipher-1.jpg)
 
-Art by ais no tye (the banner up top is cropped from this one)
+Art by @Ais_no_tye (the banner up top is cropped from this one)
 
 ![cipher](.github/assets/cipher-2.jpg)
 
-Art by pachikuri (udon zaru)
+Art by @udon_zaru
 
 ![cipher](.github/assets/cipher-3.jpg)
 
