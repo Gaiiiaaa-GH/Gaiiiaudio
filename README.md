@@ -1,6 +1,6 @@
 # Gaiiiaudio
 
-![cipher](.github/assets/cipher-1.jpg)
+![banner](.github/assets/banner.jpg)
 
 Volume mixer for Chromium browsers. Per-tab slider, per-domain rules that stick, and an optional booster.
 
@@ -28,6 +28,10 @@ Not on the Chrome Web Store.
 
 ## Art
 
+![cipher](.github/assets/cipher-1.jpg)
+
+Art by ais no tye (the banner up top is cropped from this one)
+
 ![cipher](.github/assets/cipher-2.jpg)
 
 Art by pachikuri (udon zaru)
@@ -35,8 +39,6 @@ Art by pachikuri (udon zaru)
 ![cipher](.github/assets/cipher-3.jpg)
 
 Art by @sasso_Illust
-
-Banner art by ais no tye.
 
 ## License
 
