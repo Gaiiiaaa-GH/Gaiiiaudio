@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaiiiaudio</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="header-top">
+        <h1 class="brand-title">GAIIIAUDIO</h1>
+        <button type="button" class="btn-icon-subtle" id="btnDetach" title="Detacher dans une fenetre a part">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </button>
+      </div>
+      <nav class="nav-bar">
+        <button type="button" class="nav-btn active" data-view="mixer">MELANGEUR</button>
+        <button type="button" class="nav-btn" data-view="booster">BOOSTER</button>
+        <button type="button" class="nav-btn" data-view="rules">REGLES</button>
+      </nav>
+    </header>
+
+    <main class="view-panel active" id="view-mixer">
+      <div class="mixer-toolbar">
+        <input type="text" class="text-input" id="mixerSearch" placeholder="Rechercher un onglet...">
+      </div>
+      <div class="mixer-toolbar">
+        <button type="button" class="btn-pill" id="btnWindowScope" data-scope="current">CETTE FENETRE</button>
+        <button type="button" class="btn-pill" id="btnResetAllOverrides" title="Retablir la regle (ou 100%) sur tous les onglets listes">TOUT REINITIALISER</button>
+      </div>
+      <button type="button" class="btn-pill btn-duplicates hidden" id="btnCloseDuplicates"></button>
+      <div class="mixer-list" id="mixerList"></div>
+      <div class="empty-state hidden" id="mixerEmpty">
+        <span class="empty-text">AUCUN ONGLET DETECTE</span>
+      </div>
+    </main>
+
+    <main class="view-panel" id="view-booster">
+      <div class="section-box">
+        <div class="toggle-row">
+          <div>
+            <span class="label-primary">ACTIVER LE BOOSTER</span>
+            <span class="label-secondary">Desactive par defaut. Amplifie au-dela de 100% via capture audio.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="boosterToggle">
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="booster-notice" id="boosterNotice">
+        Pendant l'amplification, la regle de domaine de cet onglet est mise en pause et le controle
+        du volume est rendu au site. Le boost s'arrete immediatement des que tu changes d'onglet ou
+        de fenetre, et la regle reprend la main.
+      </div>
+
+      <div class="booster-box" id="boosterBox">
+        <div class="booster-header">
+          <span class="view-eyebrow">ONGLET ACTIF UNIQUEMENT</span>
+          <div class="booster-tab-title" id="boosterTabName">Selectionnez un onglet</div>
+        </div>
+
+        <div class="booster-display">
+          <span class="booster-val" id="boosterValDisplay">100%</span>
+        </div>
+
+        <div class="booster-slider-wrap">
+          <input type="range" class="editorial-slider booster-range" id="boosterSlider" min="100" max="300" step="5" value="100">
+          <div class="slider-bounds">
+            <span>100%</span>
+            <span>300%</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-action" id="btnResetBooster">REMETTRE A 100%</button>
+        <div class="booster-error hidden" id="boosterError"></div>
+      </div>
+    </main>
+
+    <main class="view-panel" id="view-rules">
+      <div class="section-box">
+        <span class="view-eyebrow">NOUVELLE REGLE PAR DOMAINE</span>
+        <form class="rule-input-row" id="ruleForm" autocomplete="off">
+          <input type="text" class="text-input" id="ruleDomainInput" placeholder="ex: youtube.com" required spellcheck="false">
+          <input type="number" class="num-input" id="ruleVolumeInput" min="0" max="100" value="30" title="Volume (%)">
+          <button type="submit" class="btn-primary">ENREGISTRER</button>
+        </form>
+        <div class="quick-helpers">
+          <button type="button" class="btn-pill" id="btnFillCurrentDomain">Domaine de l'onglet actif</button>
+        </div>
+      </div>
+
+      <div class="section-box">
+        <div class="section-title-row">
+          <span class="view-eyebrow">REGLES ENREGISTREES</span>
+          <span class="count-badge" id="ruleCounter">0</span>
+        </div>
+        <div class="rules-list" id="rulesContainer"></div>
+        <div class="quick-helpers">
+          <button type="button" class="btn-pill" id="btnExportRules">Exporter (JSON)</button>
+          <button type="button" class="btn-pill" id="btnImportRules">Importer</button>
+          <input type="file" id="importFileInput" accept="application/json" class="hidden">
+        </div>
+        <div class="rules-feedback hidden" id="rulesFeedback"></div>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
